@@ -1,0 +1,16 @@
+{
+  "name": "trivia",
+  "version": "1.0.0",
+  "description": "This project will provide a user with some trivia and also with a flashcard tool to study for tests",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Jester",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}
