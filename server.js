@@ -25,10 +25,7 @@ app.get("/create-review", (req, res) => res.render('pages/create-review'));
 
 app.get("/play-trivia", (req, res) => res.render('pages/trivia-set-up'));
 
-app.get("/trivia", function(req, res) {
-    let baseUrl = 'https://opentdb.com/api.php?';
-    let requestUrl = baseUrl;
-})
+
 
 //post
 
