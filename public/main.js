@@ -198,6 +198,4 @@ function validateTriviaForm() {
 
         return false;
     }
-
-
 }
