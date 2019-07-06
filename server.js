@@ -15,7 +15,6 @@ const pool = new Pool({ connectionString: connectionString });
 let app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
@@ -35,6 +34,8 @@ app.get("/", (req, res) => res.render('pages/home'));
 app.get("/create-review", (req, res) => res.render('pages/create-review'));
 
 app.get("/play-trivia", (req, res) => res.render('pages/trivia-set-up'));
+
+app.get('/sign-up', (req, res) => res.render('pages/sign-up'))
 
 app.get("/questions", function(req, res) {
     console.log("getting questions");
