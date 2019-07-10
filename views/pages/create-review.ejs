@@ -17,19 +17,21 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/create-review">Test Review</a></li>
                 <li><a href="/play-trivia">Trivia</a></li>
-                <li><a href="/login" style="margin-left:2em;">Sign-in</a></li>
+                <li><a href="/login" style="margin-left:2em" id="login">Sign-in</a>
+                    <a href="/logout" class="hidden" id="logout">Logout | </a><span id="name" class="hidden"></span></li>
             </ul>
         </nav>
     </header>
     <h1>Create Review</h1>
+    <div id="message"></div>
     <form>
         <section id="step1">
             <label for="quiz-name">Name of Quiz</label><br>
             <input type="text" id="quiz-name"><br>
             <select name="private" id="private">
                 <option value="" disabled selected>Chose Availability</option>
-                <option value="true">Private</option>
-                <option value="false">Public</option>
+                <option value="false">Private</option>
+                <option value="true">Public</option>
             </select>
             <input type="button" value="Create Quiz" id="create-quiz">
         </section>
@@ -49,6 +51,7 @@
         <h2>Quiz Questions</h2>
     </section>
     <script src="review.js"></script>
+    <script src="home.js"></script>
 </body>
 
 </html>

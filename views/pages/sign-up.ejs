@@ -17,18 +17,23 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/create-review">Test Review</a></li>
                 <li><a href="/play-trivia">Trivia</a></li>
-                <li><a href="/login" style="margin-left:2em" ;>Sign-in</a></li>
+                <li><a href="/login" style="margin-left:2em" id="login">Sign-in</a>
+                    <a href="/logout" class="hidden" id="logout">Logout | </a><span id="name" class="hidden"></span></li>
             </ul>
         </nav>
     </header>
     Sign-up
-    <form method="POST" action="/create-user">
-        <input type="text" name="name" id="name" placeholder="Name"><br>
-        <input type="text" name="email" id="email" placeholder="Email"><br>
-        <input type="password" name="password" id="password" placeholder="Password"><br>
-        <input type="submit" value="Sign-up" id="submit"><br>
-    </form>
-
+    <% if(typeof res == 'string' && res) { %>
+        <%- res %>
+            <%}%>
+                <form method="post" action="create-user">
+                    <input type="text" name="name" id="name" placeholder="Name"><br>
+                    <input type="text" name="email" id="email" placeholder="Email"><br>
+                    <input type="password" name="password" id="password" placeholder="Password"><br>
+                    <input type="submit" value="Sign-up" id="submit"><br>
+                </form>
+                <script src="sign-up.js"></script>
+                <script src="home.js"></script>
 </body>
 
 </html>

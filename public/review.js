@@ -4,13 +4,14 @@ let finishBtn = document.getElementById('finish');
 
 let quiz = {
     quizName: "",
+    id: "",
     private: "",
     questions: []
 }
 
 quizBtn.addEventListener('click', addQuiz);
 nextBtn.addEventListener('click', next);
-finish.addEventListener('click', finish);
+finish.addEventListener('click', finishQuiz);
 
 function addQuiz() {
     quiz.quizName = document.getElementById('quiz-name').value;
@@ -38,9 +39,15 @@ function next() {
     console.log(quiz);
 }
 
-function finish() {
+function finishQuiz() {
+    console.log('finish');
     let question = document.getElementById('question').value;
     let answer = document.getElementById('answer').value;
+
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    let id = user.ID;
+
+
 
     let qset = {
         ques: question,
@@ -49,17 +56,23 @@ function finish() {
 
     quiz.questions.push(qset);
 
+    quiz.id = id;
     //question import
     fetch('/create-quiz', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(opts)
+        body: JSON.stringify(quiz)
     }).then(function(response) {
         return response.json();
     }).then(function(data) {
         console.log(data);
+        if (data.success) {
+            location.replace("/");
+        } else {
+            document.getElementById('message').innerHTML = data.message;
+        }
     }).catch(function(err) {
         console.log(err);
     });

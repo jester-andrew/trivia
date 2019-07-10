@@ -22,6 +22,13 @@ function loginUser() {
         return response.json();
     }).then(function(data) {
         console.log(data);
+        if (data.result != null) {
+            sessionStorage.setItem('user', JSON.stringify(data.result));
+            sessionStorage.setItem('loggedin', true);
+            location.replace("/");
+        } else {
+            //display message
+        }
     }).catch(function(err) {
         console.log(err);
     });
