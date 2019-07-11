@@ -20,3 +20,9 @@ function clearSession(event) {
     loggout.setAttribute('class', 'hidden');
     name.setAttribute('class', 'hidden');
 }
+
+function logout(event) {
+    event.preventDefault();
+    sessionStorage.clear();
+    location.replace('/');
+}

@@ -159,3 +159,12 @@ form a {
 .hidden {
     display: none;
 }
+
+#question,
+#answer {
+    background-color: white;
+    width: 85%;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 25em;
+}

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home | Test Review &#38; Trivia</title>
+    <title>Create Test Review | Test Review &#38; Trivia</title>
     <link rel="stylesheet" href="main.css">
 </head>
 
@@ -21,30 +21,19 @@
                     <a href="/logout" class="hidden" id="logout" onclick="logout(event)">Logout | </a><span id="name" class="hidden"></span></li>
             </ul>
         </nav>
-
     </header>
-    <div class="flex home">
-        <div id="message"></div>
-        <section class="flex section">
-            <div>
-                <h2 style="margin-right: 3em;">My Quizzes</h2>
-                <ul id="user-quizzes">
+    <h1>Quiz</h1>
+    <div id="message"></div>
+    <section id="question">
 
-                </ul>
-            </div>
-            <div>
-                <h2>Public Quizes</h2>
-                <ul id="public-quizzes">
+    </section>
 
-                </ul>
-            </div>
-        </section>
-        <a href="/play-trivia">
-            <h2>Play Trivia</h2>
-        </a>
-    </div>
+    <section id="answer" class="hidden">
+
+    </section>
+    <input type="button" value="Next Question" id="next">
+    <script src="quiz-prep.js"></script>
     <script src="home.js"></script>
-    <script src="quizzes.js"></script>
 </body>
 
 </html>
