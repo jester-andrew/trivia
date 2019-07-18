@@ -67,7 +67,6 @@ app.get('/quizzes', function(req, res) {
 });
 
 app.get("/questions", function(req, res) {
-    console.log("getting questions");
 
     let quizId = req.query.id
 
@@ -78,11 +77,8 @@ app.get("/questions", function(req, res) {
 });
 
 
-
-
 //post
 app.post("/create-quiz", function(req, res) {
-    console.log("creating quiz");
 
     //create quiz
     let quiz = {
@@ -92,15 +88,12 @@ app.post("/create-quiz", function(req, res) {
     };
 
     // insert quiz
-    console.log(quiz)
     insertQuiz(quiz, function(response) {
 
         if (response.success) {
             //insert questions
             let questions = req.body.questions;
-            console.log(questions);
             for (let i = 0; i < questions.length; i++) {
-                console.log(i);
                 let question = {
                     quizId: response.id,
                     userId: req.body.id,
@@ -121,14 +114,12 @@ app.post("/create-quiz", function(req, res) {
 });
 
 app.post("/create-user", urlencodedParser, function(req, res) {
-    console.log(req.body)
     let user = {
-        email: req.body.email,
-        name: req.body.name,
-        pass: req.body.password
-    }
-    console.log("email: " + user.email);
-    //hash password
+            email: req.body.email,
+            name: req.body.name,
+            pass: req.body.password
+        }
+        //hash password
     emailExists(user.email, function(exists) {
         if (!exists) {
             bcrypt.hash(user.pass, 10, function(err, hash) {
@@ -165,19 +156,23 @@ app.post('/sign-in', function(req, res) {
     let email = req.body.email;
     let password = req.body.password;
     getUserByEmail(email, function(result) {
-        //console.log(result);
-        let user = result[0];
-        bcrypt.compare(password, user.Password, function(err, response) {
-            if (response) {
-                console.log('password correct!');
-                user.Password = '';
-                res.json({ result: user });
-                res.end();
-            } else {
-                res.json({ result: null });
-                res.end();
-            }
-        });
+        if (result[0] == null || result[0] == undefined) {
+            res.json({ result: null });
+            res.end();
+        } else {
+            let user = result[0];
+
+            bcrypt.compare(password, user.Password, function(err, response) {
+                if (response) {
+                    user.Password = '';
+                    res.json({ result: user });
+                    res.end();
+                } else {
+                    res.json({ result: null });
+                    res.end();
+                }
+            });
+        }
     });
 });
 
@@ -213,7 +208,6 @@ function getUserByEmail(email, callback) {
             console.log("Error in query: ")
             console.log(err);
         }
-        console.log("Back from DB with result:");
         callback(result.rows);
     });
 }
@@ -229,7 +223,6 @@ function emailExists(email, callback) {
             console.log("Error in query: ")
             console.log(err);
         }
-        console.log("Back from DB with result:");
         if (result.rows.length > 0) {
             callback(true);
         } else {
@@ -249,8 +242,6 @@ function insertQuiz(quiz, callback) {
             console.log(err);
             callback({ success: false });
         }
-        console.log("Back from DB with result: ");
-        console.log(result.rows[0].ID);
 
         callback({ success: true, id: result.rows[0].ID });
     });
@@ -268,7 +259,6 @@ function insertQuestion(questions) {
             console.log("Error in query: ")
             console.log(err);
         }
-        console.log("Inserted Question Successfully!");
     });
 }
 
@@ -282,7 +272,6 @@ function getPublicQuizzes(callback) {
             console.log("Error in query: ")
             console.log(err);
         }
-        console.log("Back from DB with result:");
         callback(result.rows);
     });
 }
@@ -297,7 +286,6 @@ function getUserQuizzes(id, callback) {
             console.log("Error in query: ")
             console.log(err);
         }
-        console.log("Back from DB with result:");
         callback(result.rows);
     });
 }
@@ -312,7 +300,6 @@ function getQuizQuestions(quizId, callback) {
             console.log("Error in query: ")
             console.log(err);
         }
-        console.log("Back from DB with result:");
         callback(result.rows);
     });
 }

@@ -1,12 +1,8 @@
 let questions = JSON.parse(localStorage.getItem('review-questions'));
-console.log(questions);
 
 let question = document.getElementById('question3');
 let answer = document.getElementById('answer3');
 let next = document.getElementById('next');
-
-console.log(question);
-console.log(answer);
 
 question.addEventListener('click', showAnswer);
 answer.addEventListener('click', showQuestion);
@@ -28,7 +24,6 @@ function showQuestion() {
 }
 
 function nextQuestion() {
-    console.log(index);
     if (index < questions.length - 1) {
         index++;
         question.innerHTML = questions[index].Question;

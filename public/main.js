@@ -1,7 +1,6 @@
 let answered = false;
 localStorage.setItem('correct', 0);
 let apiToken = sessionStorage.getItem('apiToken');
-console.log("apiToken: " + apiToken);
 let loggedin = sessionStorage.getItem('loggedin');
 
 if (loggedin == null) {
@@ -51,8 +50,6 @@ function getQuestions(event) {
 
         let requestURL = BASEURL + queryString;
 
-        console.log(requestURL);
-
         let obj = getJson(requestURL);
     }
 }
@@ -64,7 +61,6 @@ function getJson(url) {
             return response.json();
         })
         .then(function(responseJson) {
-            console.log(responseJson.results);
             localStorage.setItem('question#', 0);
             localStorage.setItem('questions', JSON.stringify(responseJson.results));
             createOutput();
@@ -75,7 +71,6 @@ function getJson(url) {
 function createOutput() {
     let index = localStorage.getItem('question#');
     let questions = JSON.parse(localStorage.getItem('questions'));
-    console.log(questions[index]);
     if (index < questions.length) { //make sure questions are still available
         //build question
 
@@ -149,8 +144,6 @@ function checkAnswer(event) {
         let elem = event.target;
         elem.style.backgroundColor = "rgb(232,104,10)";
         let answer = event.target.textContent;
-        console.log(answer);
-        console.log('being called');
         let index = localStorage.getItem('question#');
         let questions = JSON.parse(localStorage.getItem('questions'));
         let message = '';
