@@ -1,8 +1,8 @@
 let questions = JSON.parse(localStorage.getItem('review-questions'));
 console.log(questions);
 
-let question = document.getElementById('question');
-let answer = document.getElementById('answer');
+let question = document.getElementById('question3');
+let answer = document.getElementById('answer3');
 let next = document.getElementById('next');
 
 console.log(question);

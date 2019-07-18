@@ -1,7 +1,29 @@
 let answered = false;
 localStorage.setItem('correct', 0);
+let apiToken = sessionStorage.getItem('apiToken');
+console.log("apiToken: " + apiToken);
+let loggedin = sessionStorage.getItem('loggedin');
+
+if (loggedin == null) {
+    let numberOfQuestions = document.getElementById('num');
+    let categoryId = document.getElementById('cat');
+    let difficulty = document.getElementById('dif');
+
+    numberOfQuestions.value = 3;
+    numberOfQuestions.disabled = true;
+
+    categoryId.value = 9;
+    categoryId.disabled = true;
+
+    difficulty.value = 'easy';
+    difficulty.disabled = true;
+
+    document.getElementById('message').innerHTML = '<p class="success-message">Enjoy the preview! Sign-in or create an account to change trivia settings!</p>';
+
+}
 
 function getQuestions(event) {
+    let apiToken = sessionStorage.getItem('apiToken');
     document.getElementById('results').setAttribute('class', 'hide');
     let valid = validateTriviaForm();
     if (valid) {
@@ -21,6 +43,10 @@ function getQuestions(event) {
 
         if (difficulty != null) {
             queryString += '&difficulty=' + difficulty;
+        }
+
+        if (apiToken != null) {
+            queryString += '&token=' + apiToken;
         }
 
         let requestURL = BASEURL + queryString;

@@ -15,14 +15,14 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/create-review">Test Review</a></li>
+                <li><a href="/create-review" onclick="checkLoggedIn(event)">Test Review</a></li>
                 <li><a href="/play-trivia">Trivia</a></li>
                 <li><a href="/login" style="margin-left:2em" id="login">Sign-in</a>
                     <a href="/logout" class="hidden" id="logout" onclick="logout(event)">Logout | </a><span id="name" class="hidden"></span></li>
             </ul>
         </nav>
     </header>
-    <h1>Create Review</h1>
+    <h1 style="margin-left:1em;">Create Review</h1>
     <div id="message"></div>
     <form>
         <section id="step1">
@@ -37,7 +37,7 @@
         </section>
         <section id="step2" class="hidden">
             <label for="question">Question</label><br>
-            <textarea name="question" id="question" cols="30" rows="10"></textarea><br>
+            <textarea name="question" id="question1" cols="30" rows="10"></textarea><br>
             <label for="answer">Answer</label><br>
             <textarea name="answer" id="answer" cols="30" rows="10"></textarea><br>
             <div id="buttons">
@@ -48,7 +48,10 @@
 
     </form>
     <section id="display">
-        <h2>Quiz Questions</h2>
+        <h2 style="margin-left:1em;">Quiz Questions</h2>
+        <div id="quiz-questions" style="margin-left:1.5em; padding-bottom: 2em;">
+            <p>No questions yet!</p>
+        </div>
     </section>
     <script src="review.js"></script>
     <script src="home.js"></script>

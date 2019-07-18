@@ -130,15 +130,31 @@ label {
     margin-bottom: 1em
 }
 
-.flex {
-    display: flex;
-}
-
 .home {
     justify-content: space-between;
-    width: 80%;
     margin-left: auto;
     margin-right: auto;
+    width: 70%;
+}
+
+.home ul li {
+    list-style: none;
+    margin-bottom: 1em;
+    text-decoration: underline;
+}
+
+.home a {
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.home ul {
+    padding-left: 0;
+    margin-bottom: 2em;
+}
+
+.flex {
+    display: flex;
 }
 
 .home a {
@@ -160,11 +176,57 @@ form a {
     display: none;
 }
 
-#question,
+#question1,
 #answer {
     background-color: white;
     width: 85%;
-    height: 100px;
     margin: auto;
-    margin-bottom: 25em;
+    margin-bottom: 2em;
+}
+
+.question-set {
+    background-color: white;
+    padding: 1em;
+    border: black solid 3px;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    width: 75%;
+    font-size: 1.2em;
+}
+
+.answer-node {
+    padding: 1em;
+    border: black solid 3px;
+    background-color: rgb(6, 144, 129);
+    margin-top: 1em;
+}
+
+#question3,
+#answer3 {
+    width: 50%;
+    min-height: 200px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    padding: .75em;
+    border-radius: 10px;
+    font-size: 1.4em;
+}
+
+#answer3 {
+    background-color: lightgray;
+}
+
+.quiz-next {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flip {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 2em;
 }

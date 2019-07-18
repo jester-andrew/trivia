@@ -15,23 +15,26 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/create-review">Test Review</a></li>
+                <li><a href="/create-review" onclick="checkLoggedIn(event)">Test Review</a></li>
                 <li><a href="/play-trivia">Trivia</a></li>
                 <li><a href="/login" style="margin-left:2em" id="login">Sign-in</a>
                     <a href="/logout" class="hidden" id="logout" onclick="logout(event)">Logout | </a><span id="name" class="hidden"></span></li>
             </ul>
         </nav>
     </header>
-    <h1>Quiz</h1>
+    <h1 style="margin-left:1em;">Quiz</h1>
     <div id="message"></div>
-    <section id="question">
+    <section id="question3">
 
     </section>
 
-    <section id="answer" class="hidden">
+    <section id="answer3" class="hidden">
 
     </section>
-    <input type="button" value="Next Question" id="next">
+    <p class="flip">(Click question or answer to flip)</p>
+    <div class="quiz-next">
+        <input type="button" value="Next Card" id="next">
+    </div>
     <script src="quiz-prep.js"></script>
     <script src="home.js"></script>
 </body>

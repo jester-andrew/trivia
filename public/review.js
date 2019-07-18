@@ -9,6 +9,8 @@ let quiz = {
     questions: []
 }
 
+let iteration = 0;
+
 quizBtn.addEventListener('click', addQuiz);
 nextBtn.addEventListener('click', next);
 finish.addEventListener('click', finishQuiz);
@@ -23,7 +25,7 @@ function addQuiz() {
 }
 
 function next() {
-    let question = document.getElementById('question').value;
+    let question = document.getElementById('question1').value;
     let answer = document.getElementById('answer').value;
 
     let qset = {
@@ -33,28 +35,57 @@ function next() {
 
     quiz.questions.push(qset);
 
-    document.getElementById('question').innerHTML = '';
-    document.getElementById('answer').innerHTML = '';
+    document.getElementById('question1').value = '';
+    document.getElementById('answer').value = '';
 
     console.log(quiz);
+
+    let output = document.getElementById('quiz-questions');
+    if (iteration == 0) {
+        iteration++;
+        output.innerHTML = '';
+    }
+    let node = document.createElement('div');
+    let questionNode = document.createElement('div');
+    let answerNode = document.createElement('div');
+
+    node.setAttribute('class', 'question-set')
+    questionNode.setAttribute('class', 'question-node');
+    answerNode.setAttribute('class', 'answer-node');
+
+    let qTextNode = document.createTextNode(qset.ques);
+    let atextNode = document.createTextNode(qset.answer);
+
+    questionNode.appendChild(qTextNode);
+    answerNode.appendChild(atextNode);
+
+    node.appendChild(questionNode);
+    node.appendChild(answerNode);
+
+    output.appendChild(node);
+
 }
 
 function finishQuiz() {
     console.log('finish');
-    let question = document.getElementById('question').value;
+
+    let question = document.getElementById('question1').value;
     let answer = document.getElementById('answer').value;
 
     let user = JSON.parse(sessionStorage.getItem('user'));
     let id = user.ID;
 
+    if (question != '' || answer != '') {
+        document.getElementById('question1').value = '';
+        document.getElementById('answer').value = '';
 
+        let qset = {
+            ques: question,
+            answer: answer
+        }
 
-    let qset = {
-        ques: question,
-        answer: answer
+        quiz.questions.push(qset);
     }
-
-    quiz.questions.push(qset);
 
     quiz.id = id;
     //question import

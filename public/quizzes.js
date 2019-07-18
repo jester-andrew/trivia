@@ -19,6 +19,23 @@ if (user != null) {
         }).catch(function(err) {
             console.log(err);
         });
+} else {
+    fetch("/quizzes")
+        .then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            let publicQuizList = document.getElementById('public-quizzes');
+            let li = '';
+            for (let i = 0; i < data.public.length; i++) {
+                li += '<li><a onclick="startQuiz(' + data.public[i].ID + ')">' + data.public[i].Name + "</a></li>";
+            }
+
+            document.getElementById('user-quizzes').innerHTML = "<li>Please Sign-in to see your quizzes</li>";
+
+            publicQuizList.innerHTML = li;
+        }).catch(function(err) {
+            console.log(err);
+        });
 }
 
 function startQuiz(quizId) {

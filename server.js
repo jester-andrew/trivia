@@ -92,6 +92,7 @@ app.post("/create-quiz", function(req, res) {
     };
 
     // insert quiz
+    console.log(quiz)
     insertQuiz(quiz, function(response) {
 
         if (response.success) {
@@ -239,7 +240,7 @@ function emailExists(email, callback) {
 }
 
 function insertQuiz(quiz, callback) {
-    let sql = 'INSERT INTO "Quizzes" ("Name", "public", "userid") VALUES ($1, $2 $3)  RETURNING "ID";';
+    let sql = 'INSERT INTO "Quizzes" ("Name", "public", "userid") VALUES ($1, $2, $3)  RETURNING "ID";';
     let values = [quiz.name, quiz.private, quiz.userid];
     pool.query(sql, values, function(err, result) {
 

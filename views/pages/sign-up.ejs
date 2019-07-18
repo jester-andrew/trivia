@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/create-review">Test Review</a></li>
+                <li><a href="/create-review" onclick="checkLoggedIn(event)">Test Review</a></li>
                 <li><a href="/play-trivia">Trivia</a></li>
                 <li><a href="/login" style="margin-left:2em" id="login">Sign-in</a>
                     <a href="/logout" class="hidden" id="logout" onclick="logout(event)">Logout | </a><span id="name" class="hidden"></span></li>
@@ -27,9 +27,9 @@
         <%- res %>
             <%}%>
                 <form method="post" action="create-user">
-                    <input type="text" name="name" id="name" placeholder="Name"><br>
-                    <input type="text" name="email" id="email" placeholder="Email"><br>
-                    <input type="password" name="password" id="password" placeholder="Password"><br>
+                    <input type="text" name="name" id="name" placeholder="Name" required><br>
+                    <input type="text" name="email" id="email" placeholder="Email" required><br>
+                    <input type="password" name="password" id="password" placeholder="Password" required><br>
                     <input type="submit" value="Sign-up" id="submit"><br>
                 </form>
                 <script src="sign-up.js"></script>
